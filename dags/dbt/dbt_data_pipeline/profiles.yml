@@ -1,0 +1,15 @@
+dbt_data_pipeline:
+  outputs:
+    dev:
+      account: yomsnna-sb16673
+      database: dbt_airflow_db
+      user: "{{ env_var('DBT_USER') }}"
+      password: "{{ env_var('DBT_PASSWORD') }}"
+      role: dbt_airflow_role
+      schema: dbt_airflow_schema
+      threads: 10
+      type: snowflake
+      warehouse: dbt_airflow_wh
+      client_session_keep_alive: True
+
+  target: dev
