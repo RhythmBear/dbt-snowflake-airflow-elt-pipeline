@@ -1,0 +1,18 @@
+.
+├── Dockerfile
+├── README.md
+├── airflow_settings.yaml
+├── dags
+│   ├── dbt
+│   ├── dbt_dag.py
+│   ├── example_dag_advanced.py
+│   └── example_dag_basic.py
+├── gen_proj-dir.txt
+├── include
+├── packages.txt
+├── plugins
+├── requirements.txt
+└── tests
+    └── dags
+
+6 directories, 9 files

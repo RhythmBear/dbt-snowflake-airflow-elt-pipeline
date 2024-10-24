@@ -1,0 +1,40 @@
+.
+├── README.md
+├── analyses
+├── dbt_dir_struc.txt
+├── dbt_packages
+│   └── dbt_utils
+├── dbt_project.yml
+├── logs
+│   └── dbt.log
+├── macros
+│   └── pricing.sql
+├── models
+│   ├── marts
+│   └── staging
+├── package-lock.yml
+├── packages.yml
+├── profiles.yml
+├── requirements.txt
+├── seeds
+├── snapshots
+├── target
+│   ├── compiled
+│   ├── graph.gpickle
+│   ├── graph_summary.json
+│   ├── manifest.json
+│   ├── partial_parse.msgpack
+│   ├── run
+│   ├── run_results.json
+│   └── semantic_manifest.json
+├── tests
+│   ├── fact_orders_date_valid.sql
+│   └── fact_orders_discount_positive.sql
+└── venv
+    ├── bin
+    ├── include
+    ├── lib
+    ├── lib64 -> lib
+    └── pyvenv.cfg
+
+19 directories, 18 files

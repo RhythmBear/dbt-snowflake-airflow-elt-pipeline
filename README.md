@@ -1,49 +1,111 @@
-Overview
-========
+# A DBT-SNOWFLAKE-AIRFLOW PROJECT
+The Goal of this project is simple. I had just completed a course on DBT and i needed to work on an Hands On Project to put to practice what i learnt. 
+> Note : This is not a full scale ELT Project. It Focuses solely on the LT part of the ELT workflow.
 
-Welcome to Astronomer! This project was generated after you ran 'astro dev init' using the Astronomer CLI. This readme describes the contents of the project, as well as how to run Apache Airflow on your local machine.
+## Table of Contents
+- [Introduction](#introduction)
+- [Project Architecture](#project-architecture)
+- [Features](#features)
+- [Installation](#installation)
+- [Directory Structure](#directory-structure)
+- [Data](#data)
 
-Project Contents
-================
+## Introduction
+A brief introduction to the project. Include:
+- **Purpose**: Transforms Snowflake TPCH Data from it's staging area to Fact Tables and Data marts.
+- **Summary**: It Solely focuses on the Loading(Snowflake), Transformation(DBT) and the Orchestration(Apache Airflow) of the Data Engineering Lifecycle.
+- **Objective**: The overall goal of the project is to get a good grasps of working with DBT and Snowflake in a dev environment and also in Production.
 
-Your Astro project contains the following files and folders:
+## Project Architecture
+![System Architecture](./project_files/system_arch.gif)
 
-- dags: This folder contains the Python files for your Airflow DAGs. By default, this directory includes two example DAGs:
-    - `example_dag_basic`: This DAG shows a simple ETL data pipeline example with three TaskFlow API tasks that run daily.
-    - `example_dag_advanced`: This advanced DAG showcases a variety of Airflow features like branching, Jinja templates, task groups and several Airflow operators.
-- Dockerfile: This file contains a versioned Astro Runtime Docker image that provides a differentiated Airflow experience. If you want to execute other commands or overrides at runtime, specify them here.
-- include: This folder contains any additional files that you want to include as part of your project. It is empty by default.
-- packages.txt: Install OS-level packages needed for your project by adding them to this file. It is empty by default.
-- requirements.txt: Install Python packages needed for your project by adding them to this file. It is empty by default.
-- plugins: Add custom or community plugins for your project to this file. It is empty by default.
-- airflow_settings.yaml: Use this local-only file to specify Airflow Connections, Variables, and Pools instead of entering them in the Airflow UI as you develop DAGs in this project.
+## Features
+The Key Features and Technologies involved include
+- **Data Transformation** using DBT-CORE.
+- **Data Source and Destination** Snowflake
+- **Managing DBT Dags in Airflow** using Astronomer-Cosmos
+- **AIrflow Environmnet using** Astronmoer
+- **Automated Scheduling** with Airflow.
 
-Deploy Your Project Locally
-===========================
 
-1. Start Airflow on your local machine by running 'astro dev start'.
+## Installation
+1. **Prerequisites**: Python, Docker, Terraform, Astro
+2. **Environment Setup**: Because of the Nature of this project. You'll need to configure your own snowflake credentials in the profiles.yml file in the dbt directory.
+3. **Installation Steps**: 
+Example:
 
-This command will spin up 4 Docker containers on your machine, each for a different Airflow component:
+```bash
+# Clone the repository
+git clone https://github.com/rhythmbear/dbt-snowflake-airflow-elt-pipeline.git dbt-snowflake-airflow
 
-- Postgres: Airflow's Metadata Database
-- Webserver: The Airflow component responsible for rendering the Airflow UI
-- Scheduler: The Airflow component responsible for monitoring and triggering tasks
-- Triggerer: The Airflow component responsible for triggering deferred tasks
+# Navigate to the project directory
+cd dbt-snowflake-airflow
 
-2. Verify that all 4 Docker containers were created by running 'docker ps'.
+# Run Astro Airflow Environment.
+astro dev start 
+```
+## Directory Structure.
+```graphql
+## General Directory Structure.
+.
+├── Dockerfile 
+├── README.md
+├── airflow_settings.yaml
+├── dags
+│   ├── dbt # Folder for housing DBT projects
+│   ├── dbt_dag.py # DAG For Triggering DBT Project
+│   ├── example_dag_advanced.py
+│   └── example_dag_basic.py
+├── include
+├── packages.txt
+├── plugins
+├── requirements.txt
+└── tests
+    └── dags
 
-Note: Running 'astro dev start' will start your project with the Airflow Webserver exposed at port 8080 and Postgres exposed at port 5432. If you already have either of those ports allocated, you can either [stop your existing Docker containers or change the port](https://docs.astronomer.io/astro/test-and-troubleshoot-locally#ports-are-not-available).
+6 directories, 9 files
 
-3. Access the Airflow UI for your local Airflow project. To do so, go to http://localhost:8080/ and log in with 'admin' for both your Username and Password.
+```
+```graphql
+## DBT PROJECT STRUCTURE
+.
+├── README.md
+├── analyses
+├── dbt_packages
+│   └── dbt_utils
+├── dbt_project.yml
+├── logs
+│   └── dbt.log
+├── macros
+│   └── pricing.sql
+├── models
+│   ├── marts
+│   └── staging
+├── package-lock.yml
+├── packages.yml
+├── profiles.yml
+├── requirements.txt
+├── seeds
+├── snapshots
+├── target
+│   ├── compiled
+│   ├── graph.gpickle
+│   ├── graph_summary.json
+│   ├── manifest.json
+│   ├── partial_parse.msgpack
+│   ├── run
+│   ├── run_results.json
+│   └── semantic_manifest.json
+├── tests
+│   ├── fact_orders_date_valid.sql
+│   └── fact_orders_discount_positive.sql
+└── venv
+    ├── bin
+    ├── include
+    ├── lib
+    ├── lib64 -> lib
+    └── pyvenv.cfg
 
-You should also be able to access your Postgres Database at 'localhost:5432/postgres'.
+19 directories, 18 files
 
-Deploy Your Project to Astronomer
-=================================
-
-If you have an Astronomer account, pushing code to a Deployment on Astronomer is simple. For deploying instructions, refer to Astronomer documentation: https://docs.astronomer.io/cloud/deploy-code/
-
-Contact
-=======
-
-The Astronomer CLI is maintained with love by the Astronomer team. To report a bug or suggest a change, reach out to our support.
+```
