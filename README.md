@@ -109,3 +109,10 @@ astro dev start
 19 directories, 18 files
 
 ```
+
+
+## DAGS
+![DAG Progress](./project_files/dbt_dag_tasks.png)
+
+![Dag Image](./project_files/dbt-airflow-dag.png)
+
