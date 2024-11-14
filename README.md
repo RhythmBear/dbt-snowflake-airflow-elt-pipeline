@@ -8,7 +8,7 @@ The Goal of this project is simple. I had just completed a course on DBT and i n
 - [Features](#features)
 - [Installation](#installation)
 - [Directory Structure](#directory-structure)
-- [Data](#data)
+- [Dags](#dags)
 
 ## Introduction
 A brief introduction to the project. Include:
@@ -111,7 +111,7 @@ astro dev start
 ```
 
 
-## DAGS
+## Dags
 ![DAG Progress](./project_files/dbt_dag_tasks.png)
 
 ![Dag Image](./project_files/dbt-airflow-dag.png)
